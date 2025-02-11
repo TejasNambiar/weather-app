@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Weather.css";
 
 const api = {
   key: "8020c088b79c9e4a95ba3582f2206a6c",
@@ -56,7 +57,15 @@ export const Weather = () => {
     return `${day} ${month} ${year}`;
   };
   return (
-    <div>
+    <div
+      className={
+        typeof weather.main != undefined
+          ? weather.main?.temp > 16
+            ? "app warm"
+            : "app"
+          : app
+      }
+    >
       <main>
         <div className="search-box">
           <input
@@ -65,17 +74,25 @@ export const Weather = () => {
             placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={search}
+            onKeyDown={search}
           />
         </div>
-        <div>
-          <div className="location-box">
-            <div className="location">
-              {weather.name}, {weather.sys?.country}
+        {typeof weather.sys == undefined || weather.sys == undefined ? (
+          <div></div>
+        ) : (
+          <div>
+            <div className="location-box">
+              <div className="location">
+                {weather.name}, {weather.sys?.country}
+              </div>
+              <div className="date">{dateBuilder(new Date())}</div>
             </div>
-            <div className="date">{dateBuilder(new Date())}</div>
+            <div className="weather-box">
+              <div className="temp">{Math.round(weather.main?.temp)}°C</div>
+              <div className="weather">{weather.weather[0]?.main}°C</div>
+            </div>
           </div>
-        </div>
+        )}
       </main>
     </div>
   );
