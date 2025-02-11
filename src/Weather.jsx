@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import { WeatherBody } from "./WeatherBody";
+import { days, months } from "./Constants";
 
 const api = {
   key: "8020c088b79c9e4a95ba3582f2206a6c",
@@ -24,31 +26,6 @@ export const Weather = () => {
   };
 
   const dateBuilder = (value) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "Novemeber",
-      "December",
-    ];
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ];
-
     let day = days[value.getDay()];
     let date = value.getDate();
     let month = months[value.getMonth()];
@@ -77,22 +54,7 @@ export const Weather = () => {
             onKeyDown={search}
           />
         </div>
-        {typeof weather.sys == undefined || weather.sys == undefined ? (
-          <div></div>
-        ) : (
-          <div>
-            <div className="location-box">
-              <div className="location">
-                {weather.name}, {weather.sys?.country}
-              </div>
-              <div className="date">{dateBuilder(new Date())}</div>
-            </div>
-            <div className="weather-box">
-              <div className="temp">{Math.round(weather.main?.temp)}°C</div>
-              <div className="weather">{weather.weather[0]?.main}°C</div>
-            </div>
-          </div>
-        )}
+        <WeatherBody weather={weather} dateBuilder={dateBuilder} />
       </main>
     </div>
   );
