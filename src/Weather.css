@@ -1,97 +1,114 @@
-*{
+/* Reset default margin, padding, and ensure consistent box-sizing */
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensures padding/borders don't affect width/height */
 }
 
+/* Set a clean, readable font for the whole document */
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.app{
-    background-image: url('./assets/cold.jpg');
-    background-size: cover;
-    background-position: bottom;
-    transition: 0.4 ease;
+/* App container styles - background image and transition */
+.app {
+    background-image: url('./assets/cold.jpg'); /* Default background for cold weather */
+    background-size: cover; /* Ensures the image covers the full container */
+    background-position: bottom; /* Aligns the image at the bottom */
+    transition: 0.4s ease; /* Smooth transition when background changes */
 }
 
-.app.warm{
-    background-image: url('./assets/warm.jpg');
+/* Modifier class for warm weather */
+.app.warm {
+    background-image: url('./assets/warm.jpg'); /* Background changes to warm weather image */
 }
 
-main{
-    min-height: 100vh;
-    padding: 25px;
-    background-image: linear-gradient(to bottom,
-    rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+/* Main content styles */
+main {
+    min-height: 100vh; /* Ensures it takes the full height of the viewport */
+    padding: 25px; /* Adds some spacing around content */
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2), /* Light fade at top */
+        rgba(0, 0, 0, 0.75) /* Darker fade at bottom */
+    ); /* Adds a dark gradient overlay for better text contrast */
 }
 
-.search-box{
-    width: 100%;
-    margin: 0 0 75px;
+/* Search box container */
+.search-box {
+    width: 100%; /* Full width */
+    margin: 0 0 75px; /* Adds space below the search box */
 }
 
-.search-box .search-bar{
+/* Styling the search input field */
+.search-box .search-bar {
     display: block;
     width: 100%;
-    padding:15px;
-    appearance: none;
+    padding: 15px;
+    appearance: none; /* Removes default styling in some browsers */
     background: none;
-    outline: none;
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 0px 0px 16px 16px;
-    margin-top: -25px;
-    box-shadow: 0px 5px rgba(0,0,0,0.2);
-    color: #313131;
+    outline: none; /* Removes focus outline */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    border-radius: 0px 0px 16px 16px; /* Rounds the bottom corners */
+    margin-top: -25px; /* Pulls the input up */
+    box-shadow: 0px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth */
+    color: #313131; /* Dark text for readability */
     font-size: 20px;
-    transition: 0.4s ease;
+    transition: 0.4s ease; /* Smooth hover/focus effect */
 }
 
-.search-box .search-bar:focus{
-    background-color: rgba(255,255,255,0.75);
+/* Search bar focus state */
+.search-box .search-bar:focus {
+    background-color: rgba(255, 255, 255, 0.75); /* Becomes more opaque when focused */
 }
 
-.location-box{
+/* Location box: Centered text for location and date */
+.location-box {
     text-align: center;
 }
 
-.location-box .location{
-    color: #fff;
-    font-size: 32px;
-    font-weight: 500;
-    text-shadow: 3px 3px rgba(50,50,70,0.5);
+/* Location name styles */
+.location-box .location {
+    color: #fff; /* White text */
+    font-size: 32px; /* Large text */
+    font-weight: 500; /* Medium font weight */
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5); /* Subtle text shadow for readability */
 }
-.location-box .date{
+
+/* Date styles */
+.location-box .date {
     color: #fff;
     font-size: 20px;
     font-weight: 300;
-    font-style: italic;
+    font-style: italic; /* Gives a slight handwritten feel */
     text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
-.weather-box{
+
+/* Weather box: Centered container for weather details */
+.weather-box {
     text-align: center;
 }
 
-.weather-box .temp{
+/* Temperature display styles */
+.weather-box .temp {
     position: relative;
-    display: inline-block;
-    margin: 30px auto;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-
-    padding: 15px 25px;
-    color: #fff;
-    font-size: 102px;
-    font-weight: 900;
-
-    text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+    display: inline-block; /* Centers content */
+    margin: 30px auto; /* Adds spacing around */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    border-radius: 16px; /* Rounds corners */
+    padding: 15px 25px; /* Adds space inside */
+    color: #fff; /* White text */
+    font-size: 102px; /* Large font size for visibility */
+    font-weight: 900; /* Bold text */
+    text-shadow: 3px 6px rgba(50, 50, 70, 0.5); /* Text shadow for readability */
     text-align: center;
-    box-shadow: 3px 6px rgba(0,0,0,0.2);
+    box-shadow: 3px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
 
-.weather-box .weather{
-    color:#fff;
-    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-    font-size: 48px;
-    font-weight: 700;
+/* Weather condition text styles (e.g., Sunny, Rainy) */
+.weather-box .weather {
+    color: #fff; /* White text */
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5); /* Improves readability */
+    font-size: 48px; /* Large font size */
+    font-weight: 700; /* Bold font */
 }
